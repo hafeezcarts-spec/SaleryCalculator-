@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════ SEO META TAGS ═══════════ -->
+<title>Pakistan Salary Calculator 2025-26 | Net Take-Home Pay & Tax Calculator</title>
+<meta name="description" content="Free Pakistan salary calculator for 2025-26, 2024-25, 2023-24 & older years. Calculate your exact net take-home pay after income tax (FBR), EOBI, and provident fund deductions. Instant results.">
+<meta name="keywords" content="Pakistan salary calculator, net salary calculator Pakistan, income tax calculator Pakistan 2025, FBR tax calculator, take home pay Pakistan, salary after tax Pakistan, EOBI calculator, tax slabs Pakistan 2025-26">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Pakistan Salary Calculator">
+<link rel="canonical" href="https://YOUR-SITE.com/">
+
+<!-- Open Graph (for WhatsApp/Facebook sharing) -->
+<meta property="og:title" content="Pakistan Salary Calculator 2025-26 – Free & Accurate">
+<meta property="og:description" content="Calculate your net take-home salary in seconds. Updated with FBR tax slabs for 2025-26.">
+<meta property="og:type" content="website">
+
+<!-- Schema.org structured data for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pakistan Salary Calculator",
+  "description": "Free online salary and income tax calculator for Pakistan. Covers FBR tax slabs for 2021-22 to 2025-26.",
+  "url": "https://YOUR-SITE.com/",
+  "applicationCategory": "FinanceApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PKR" }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#f5f7fa;color:#1a202c;font-size:15px;line-height:1.6}
+
+/* ── HEADER ── */
+.header{background:#1a56db;color:#fff;padding:28px 20px 24px;text-align:center}
+.header h1{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;margin-bottom:6px}
+.header p{font-size:0.9rem;opacity:.85}
+
+/* ── LAYOUT ── */
+.wrap{max-width:700px;margin:0 auto;padding:20px 14px 60px}
+
+/* ── CARD ── */
+.card{background:#fff;border-radius:12px;border:1px solid #e2e8f0;padding:22px 20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card-head{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#718096;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #edf2f7}
+
+/* ── YEAR PILLS ── */
+.year-row{display:flex;flex-wrap:wrap;gap:8px}
+.ypill{padding:8px 14px;border:2px solid #e2e8f0;border-radius:50px;background:#fff;cursor:pointer;font-size:0.82rem;font-weight:600;color:#4a5568;transition:all .18s;white-space:nowrap}
+.ypill:hover{border-color:#1a56db;color:#1a56db}
+.ypill.active{background:#1a56db;border-color:#1a56db;color:#fff;box-shadow:0 2px 8px rgba(26,86,219,.3)}
+.ypill .new{font-size:0.65rem;background:#e53e3e;color:#fff;border-radius:4px;padding:1px 5px;margin-left:5px;vertical-align:middle}
+
+/* ── FORM ── */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:500px){.row2{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg.full{grid-column:1/-1}
+label{font-size:0.78rem;font-weight:600;color:#4a5568;text-transform:uppercase;letter-spacing:.4px}
+.iw{position:relative}
+.iw span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#1a56db;font-weight:700;font-size:.9rem;pointer-events:none}
+.iw input{padding-left:38px}
+input[type=number],select{width:100%;padding:11px 13px;border:2px solid #e2e8f0;border-radius:9px;font-family:inherit;font-size:.95rem;color:#1a202c;background:#f8fafc;transition:border .18s}
+input[type=number]:focus,select:focus{outline:none;border-color:#1a56db;background:#fff}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a5568' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px}
+
+/* ── TOGGLES ── */
+.tog-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f0f4f8}
+.tog-row:last-child{border-bottom:none}
+.tog-info .tl{font-size:.9rem;font-weight:500}
+.tog-info .ts{font-size:.75rem;color:#718096;margin-top:1px}
+.tog{position:relative;width:44px;height:24px;flex-shrink:0}
+.tog input{opacity:0;width:0;height:0}
+.sl{position:absolute;cursor:pointer;inset:0;background:#cbd5e0;border-radius:24px;transition:.25s}
+.sl::before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+input:checked+.sl{background:#1a56db}
+input:checked+.sl::before{transform:translateX(20px)}
+
+/* ── BUTTON ── */
+.btn-calc{width:100%;padding:14px;background:#1a56db;color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:18px;transition:all .18s;letter-spacing:.2px}
+.btn-calc:hover{background:#1648c0;box-shadow:0 4px 14px rgba(26,86,219,.35)}
+.btn-calc:active{transform:scale(.99)}
+
+/* ── RESULTS ── */
+#results{display:none}
+.res-top{background:#1a56db;color:#fff;border-radius:12px;padding:22px;text-align:center;margin-bottom:14px}
+.res-top .rl{font-size:.82rem;opacity:.8;margin-bottom:4px}
+.res-top .ra{font-size:clamp(1.9rem,6vw,2.8rem);font-weight:700;letter-spacing:-1px}
+.res-top .rp{font-size:.8rem;opacity:.7;margin-top:4px}
+
+/* period tabs */
+.ptabs{display:flex;background:#edf2f7;border-radius:8px;padding:3px;margin-bottom:14px;width:fit-content}
+.ptab{padding:7px 18px;border:none;background:none;border-radius:6px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;color:#718096;transition:all .18s}
+.ptab.active{background:#fff;color:#1a56db;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+/* grid cards */
+.bg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:500px){.bg{grid-template-columns:1fr}}
+.bi{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;display:flex;justify-content:space-between;align-items:center}
+.bi .bl{font-size:.8rem;color:#718096;font-weight:500}
+.bi .bv{font-size:.95rem;font-weight:700}
+.bv.g{color:#1a56db}.bv.r{color:#e53e3e}.bv.o{color:#d69e2e}
+
+/* bar */
+.bar-wrap{margin:10px 0 6px}
+.bar-labels{display:flex;justify-content:space-between;font-size:.75rem;color:#718096;margin-bottom:5px}
+.bar{height:16px;background:#edf2f7;border-radius:8px;overflow:hidden;display:flex}
+.bar-seg{height:100%;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.s-net{background:#1a56db}.s-tax{background:#e53e3e}.s-pf{background:#38b2ac}.s-eobi{background:#d69e2e}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:7px}
+.li{display:flex;align-items:center;gap:4px;font-size:.75rem;color:#4a5568}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* slab table */
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.tbl th{background:#edf2f7;color:#4a5568;padding:9px 10px;text-align:left;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.4px}
+.tbl td{padding:8px 10px;border-bottom:1px solid #f0f4f8;color:#2d3748}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr.hl td{background:#fef3c7;font-weight:600}
+
+/* action row */
+.act{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.abtn{flex:1;min-width:100px;padding:10px;border:2px solid #e2e8f0;background:#fff;border-radius:9px;font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;color:#4a5568;transition:all .18s;text-align:center}
+.abtn:hover{border-color:#1a56db;color:#1a56db}
+
+/* disclaimer */
+.disc{background:#fffbeb;border:1px solid #f6e05e;border-radius:9px;padding:11px 14px;font-size:.78rem;color:#7b5e08;margin-top:12px}
+
+/* ── SEO TEXT ── */
+.seo-section{margin-top:28px}
+.seo-section h2{font-size:1.15rem;font-weight:700;color:#1a202c;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #edf2f7}
+.seo-section h3{font-size:.95rem;font-weight:600;color:#2d3748;margin:14px 0 6px}
+.seo-section p{font-size:.87rem;color:#4a5568;margin-bottom:10px}
+.faq-item{border:1px solid #e2e8f0;border-radius:9px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:12px 14px;font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#f8fafc;color:#2d3748;user-select:none}
+.faq-q:hover{background:#edf2f7}
+.faq-a{padding:0 14px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a.open{max-height:200px;padding:12px 14px}
+.faq-a p{font-size:.85rem;color:#4a5568;margin:0}
+.arrow{transition:transform .3s;font-size:.75rem}
+.faq-q.open .arrow{transform:rotate(180deg)}
+
+/* ── FOOTER ── */
+footer{text-align:center;color:#718096;font-size:.78rem;padding:20px;border-top:1px solid #e2e8f0;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Pakistan Salary & Tax Calculator</h1>
+  <p>Calculate your exact take-home pay — Updated for 2025–26 FBR tax slabs</p>
+</header>
+
+<div class="wrap">
+
+  <!-- YEAR -->
+  <div class="card">
+    <div class="card-head">Select Tax Year</div>
+    <div class="year-row" id="yearRow"></div>
+  </div>
+
+  <!-- INPUTS -->
+  <div class="card">
+    <div class="card-head">Enter Your Salary Details</div>
+    <div class="row2">
+      <div class="fg full">
+        <label>Gross Monthly Salary (PKR)</label>
+        <div class="iw"><span>₨</span>
+          <input type="number" id="gross" placeholder="e.g. 80000" min="0">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Additional Allowances / Month</label>
+        <div class="iw"><span>₨</span>
+          <input type="number" id="allow" placeholder="0" min="0">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Employment Type</label>
+        <select id="empType">
+          <option value="salaried">Salaried Employee</option>
+          <option value="business">Business / Non-Salaried</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="tog-row">
+        <div class="tog-info">
+          <div class="tl">EOBI Deduction</div>
+          <div class="ts">Employee Old-Age Benefits — Rs. 370/month</div>
+        </div>
+        <label class="tog"><input type="checkbox" id="eobi" checked><span class="sl"></span></label>
+      </div>
+      <div class="tog-row">
+        <div class="tog-info">
+          <div class="tl">Provident Fund (PF)</div>
+          <div class="ts">8.33% of gross salary</div>
+        </div>
+        <label class="tog"><input type="checkbox" id="pf"><span class="sl"></span></label>
+      </div>
+      <div class="tog-row">
+        <div class="tog-info">
+          <div class="tl">Professional Tax</div>
+          <div class="ts">Provincial tax based on salary bracket</div>
+        </div>
+        <label class="tog"><input type="checkbox" id="prof" checked><span class="sl"></span></label>
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="calc()">Calculate Take-Home Pay</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+
+    <div class="res-top">
+      <div class="rl">Estimated Monthly Take-Home Pay</div>
+      <div class="ra" id="rNet">₨ 0</div>
+      <div class="rp" id="rPeriod"></div>
+    </div>
+
+    <div class="ptabs">
+      <button class="ptab active" id="tM" onclick="period('monthly')">Monthly</button>
+      <button class="ptab" id="tA" onclick="period('annual')">Annual</button>
+    </div>
+
+    <div class="bg" id="bgrid"></div>
+
+    <!-- BAR -->
+    <div class="card">
+      <div class="card-head">Salary Breakdown</div>
+      <div class="bar-wrap">
+        <div class="bar-labels"><span>Your salary split</span><span id="netPct"></span></div>
+        <div class="bar" id="barEl"></div>
+        <div class="legend" id="legEl"></div>
+      </div>
+    </div>
+
+    <!-- SLABS -->
+    <div class="card">
+      <div class="card-head">FBR Tax Slabs — <span id="slabYear"></span></div>
+      <div style="overflow-x:auto"><table class="tbl" id="tblEl"></table></div>
+    </div>
+
+    <div class="act">
+      <button class="abtn" onclick="window.print()">🖨️ Print / PDF</button>
+      <button class="abtn" onclick="copyRes()">📋 Copy Results</button>
+      <button class="abtn" onclick="reset()">↺ Reset</button>
+    </div>
+
+    <div class="disc">
+      ⚠️ <strong>Note:</strong> This calculator provides estimates based on official FBR published tax slabs. Actual deductions may vary. Always confirm with your HR or a tax advisor.
+    </div>
+
+  </div><!-- /results -->
+
+  <!-- ═══════════ SEO CONTENT ═══════════ -->
+  <div class="seo-section">
+
+    <div class="card">
+      <h2>Pakistan Salary Calculator – Net Take-Home Pay</h2>
+      <p>
+        Our <strong>free Pakistan salary calculator</strong> helps you find out exactly how much money you take home each month after all deductions. Whether you are a fresh graduate, an HR manager, or a business owner, this tool gives you an instant, accurate breakdown of your income tax, EOBI, and other deductions based on the latest <strong>FBR tax slabs</strong>.
+      </p>
+
+      <h3>What Does This Calculator Include?</h3>
+      <p>
+        This tool covers all major salary deductions in Pakistan: <strong>Income Tax</strong> as per FBR progressive slabs, <strong>EOBI</strong> (Employees' Old-Age Benefits), <strong>Provident Fund</strong> at 8.33%, and <strong>Professional Tax</strong> based on your province. You can switch between tax years from 2021–22 all the way to the latest <strong>2025–26</strong> budget.
+      </p>
+
+      <h3>FBR Tax Slabs for 2025–26</h3>
+      <p>
+        The Finance Act 2025–26 brought significant relief to salaried individuals. The tax rate on income between Rs. 600,000 and Rs. 1.2 million was reduced from 5% to just 1%. Middle-income brackets also saw reductions. The new slabs range from 0% (up to Rs. 600,000) to 35% (above Rs. 4.1 million annually).
+      </p>
+
+      <h3>How to Use This Calculator</h3>
+      <p>
+        Simply select your tax year, enter your gross monthly salary, toggle any applicable deductions, and click <strong>"Calculate Take-Home Pay"</strong>. You will instantly see your net salary, total tax, effective tax rate, and a visual breakdown. You can also switch between monthly and annual views.
+      </p>
+
+      <h3>Who Is This For?</h3>
+      <p>
+        This calculator is useful for <strong>salaried employees</strong> in Pakistan who want to check their monthly take-home pay, <strong>job seekers</strong> comparing offers, <strong>HR professionals</strong> calculating payroll, and <strong>freelancers or business owners</strong> who want to estimate their annual tax liability.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="faq(this)">What is the income tax exemption limit in Pakistan for 2025-26? <span class="arrow">▼</span></div>
+        <div class="faq-a"><p>For salaried individuals, income up to Rs. 600,000 per year (Rs. 50,000/month) is completely tax-free under FBR tax slabs 2025-26.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="faq(this)">How is income tax calculated on salary in Pakistan? <span class="arrow">▼</span></div>
+        <div class="faq-a"><p>Pakistan uses a progressive tax system. Your annual salary is divided into brackets (slabs). Each portion of income is taxed at a different rate. You do not pay the top rate on your full income — only on the portion that falls in each bracket.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="faq(this)">What is EOBI deduction in salary? <span class="arrow">▼</span></div>
+        <div class="faq-a"><p>EOBI (Employees' Old-Age Benefits Institution) is a social security contribution. The employee pays Rs. 370 per month and the employer pays 5% of minimum wage. It provides pension benefits after retirement.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="faq(this)">Is provident fund deducted from salary in Pakistan? <span class="arrow">▼</span></div>
+        <div class="faq-a"><p>Provident Fund (PF) is optional and depends on your employer's policy. Typically, 8.33% of basic salary is deducted and the employer matches the same. This money is returned to you when you leave the job or retire.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="faq(this)">What is professional tax in Pakistan? <span class="arrow">▼</span></div>
+        <div class="faq-a"><p>Professional tax is a small provincial tax deducted from salaries. The amount depends on your salary range and province. For most employees it ranges from Rs. 200 to Rs. 1,200 per month.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="faq(this)">How much tax is deducted from Rs. 100,000 salary in Pakistan 2025-26? <span class="arrow">▼</span></div>
+        <div class="faq-a"><p>On a Rs. 100,000 monthly salary (Rs. 1,200,000 annual), the tax is Rs. 6,000 per year = Rs. 500 per month under 2025-26 slabs. This is much lower than 2024-25 thanks to the rate reduction from 5% to 1% in that bracket.</p></div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /SEO -->
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>Pakistan Salary Calculator &nbsp;|&nbsp; Based on FBR Income Tax Ordinance &nbsp;|&nbsp; Updated for Tax Year 2025–26</p>
+  <p style="margin-top:4px">This is a free estimation tool. Not a substitute for professional tax advice.</p>
+</footer>
+
+<script>
+// ── TAX DATA ──
+const YEARS = {
+  "2021-22":{ label:"2021–22", badge:"", slabType:"old",
+    sal:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.05  , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:1800000, fix:30000,   rate:.10  , desc:"Rs. 12–18 Lac"},
+      {min:1800001, max:2500000, fix:90000,   rate:.15  , desc:"Rs. 18–25 Lac"},
+      {min:2500001, max:3500000, fix:195000,  rate:.175 , desc:"Rs. 25–35 Lac"},
+      {min:3500001, max:5000000, fix:370000,  rate:.20  , desc:"Rs. 35–50 Lac"},
+      {min:5000001, max:8000000, fix:670000,  rate:.225 , desc:"Rs. 50–80 Lac"},
+      {min:8000001, max:1e12,    fix:1345000, rate:.275 , desc:"Above Rs. 80 Lac"}
+    ],
+    biz:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.075 , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2400000, fix:45000,   rate:.15  , desc:"Rs. 12–24 Lac"},
+      {min:2400001, max:3600000, fix:225000,  rate:.20  , desc:"Rs. 24–36 Lac"},
+      {min:3600001, max:6000000, fix:465000,  rate:.25  , desc:"Rs. 36–60 Lac"},
+      {min:6000001, max:1e12,    fix:1065000, rate:.325 , desc:"Above Rs. 60 Lac"}
+    ]
+  },
+  "2022-23":{ label:"2022–23", badge:"",
+    sal:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.025 , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2400000, fix:15000,   rate:.125 , desc:"Rs. 12–24 Lac"},
+      {min:2400001, max:3600000, fix:165000,  rate:.20  , desc:"Rs. 24–36 Lac"},
+      {min:3600001, max:6000000, fix:405000,  rate:.25  , desc:"Rs. 36–60 Lac"},
+      {min:6000001, max:1e12,    fix:1005000, rate:.325 , desc:"Above Rs. 60 Lac"}
+    ],
+    biz:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.075 , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2400000, fix:45000,   rate:.15  , desc:"Rs. 12–24 Lac"},
+      {min:2400001, max:3600000, fix:225000,  rate:.25  , desc:"Rs. 24–36 Lac"},
+      {min:3600001, max:6000000, fix:525000,  rate:.325 , desc:"Rs. 36–60 Lac"},
+      {min:6000001, max:1e12,    fix:1305000, rate:.35  , desc:"Above Rs. 60 Lac"}
+    ]
+  },
+  "2023-24":{ label:"2023–24", badge:"",
+    sal:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.025 , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2200000, fix:15000,   rate:.125 , desc:"Rs. 12–22 Lac"},
+      {min:2200001, max:3200000, fix:140000,  rate:.20  , desc:"Rs. 22–32 Lac"},
+      {min:3200001, max:4100000, fix:340000,  rate:.25  , desc:"Rs. 32–41 Lac"},
+      {min:4100001, max:1e12,    fix:565000,  rate:.325 , desc:"Above Rs. 41 Lac"}
+    ],
+    biz:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.10  , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2200000, fix:60000,   rate:.30  , desc:"Rs. 12–22 Lac"},
+      {min:2200001, max:3200000, fix:360000,  rate:.40  , desc:"Rs. 22–32 Lac"},
+      {min:3200001, max:4100000, fix:760000,  rate:.50  , desc:"Rs. 32–41 Lac"},
+      {min:4100001, max:1e12,    fix:1210000, rate:.55  , desc:"Above Rs. 41 Lac"}
+    ]
+  },
+  "2024-25":{ label:"2024–25", badge:"",
+    sal:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.05  , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2200000, fix:30000,   rate:.15  , desc:"Rs. 12–22 Lac"},
+      {min:2200001, max:3200000, fix:180000,  rate:.25  , desc:"Rs. 22–32 Lac"},
+      {min:3200001, max:4100000, fix:430000,  rate:.30  , desc:"Rs. 32–41 Lac"},
+      {min:4100001, max:1e12,    fix:700000,  rate:.35  , desc:"Above Rs. 41 Lac"}
+    ],
+    biz:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.10  , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2200000, fix:60000,   rate:.30  , desc:"Rs. 12–22 Lac"},
+      {min:2200001, max:3200000, fix:360000,  rate:.50  , desc:"Rs. 22–32 Lac"},
+      {min:3200001, max:4100000, fix:860000,  rate:.60  , desc:"Rs. 32–41 Lac"},
+      {min:4100001, max:1e12,    fix:1400000, rate:.70  , desc:"Above Rs. 41 Lac"}
+    ]
+  },
+  "2025-26":{ label:"2025–26", badge:"NEW",
+    sal:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.01  , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2200000, fix:6000,    rate:.11  , desc:"Rs. 12–22 Lac"},
+      {min:2200001, max:3200000, fix:116000,  rate:.23  , desc:"Rs. 22–32 Lac"},
+      {min:3200001, max:4100000, fix:346000,  rate:.30  , desc:"Rs. 32–41 Lac"},
+      {min:4100001, max:1e12,    fix:616000,  rate:.35  , desc:"Above Rs. 41 Lac"}
+    ],
+    biz:[
+      {min:0,       max:600000,  fix:0,       rate:0    , desc:"Up to Rs. 6 Lac"},
+      {min:600001,  max:1200000, fix:0,       rate:.02  , desc:"Rs. 6–12 Lac"},
+      {min:1200001, max:2200000, fix:12000,   rate:.22  , desc:"Rs. 12–22 Lac"},
+      {min:2200001, max:3200000, fix:232000,  rate:.46  , desc:"Rs. 22–32 Lac"},
+      {min:3200001, max:4100000, fix:692000,  rate:.60  , desc:"Rs. 32–41 Lac"},
+      {min:4100001, max:1e12,    fix:1232000, rate:.70  , desc:"Above Rs. 41 Lac"}
+    ]
+  }
+};
+
+let selYear = "2025-26", curPeriod = "monthly", lastR = null;
+
+// Build year pills
+function buildYears(){
+  const row = document.getElementById('yearRow');
+  row.innerHTML = '';
+  Object.entries(YEARS).forEach(([k,v])=>{
+    const b = document.createElement('button');
+    b.className = 'ypill' + (k===selYear?' active':'');
+    b.innerHTML = v.label + (v.badge ? `<span class="new">${v.badge}</span>` : '');
+    b.onclick = ()=>{ selYear=k; buildYears(); };
+    row.appendChild(b);
+  });
+}
+buildYears();
+
+// Tax calc
+function taxFor(annual, slabs){
+  for(let s of slabs){
+    if(annual >= s.min && annual <= s.max){
+      return { tax: s.fix + (annual - s.min + (s.min===0?0:1)) * s.rate,
+               slab: s };
+    }
+  }
+  return {tax:0, slab:slabs[0]};
+}
+
+function profTax(mg){
+  if(mg<=25000)return 0; if(mg<=50000)return 200;
+  if(mg<=75000)return 400; if(mg<=150000)return 600; return 1200;
+}
+
+function fmt(n){ return '₨ ' + Math.round(n).toLocaleString('en-PK'); }
+
+function calc(){
+  const gross = parseFloat(document.getElementById('gross').value)||0;
+  if(gross<=0){ alert('Please enter your monthly salary.'); return; }
+  const allow = parseFloat(document.getElementById('allow').value)||0;
+  const emp   = document.getElementById('empType').value;
+  const useE  = document.getElementById('eobi').checked;
+  const usePF = document.getElementById('pf').checked;
+  const useP  = document.getElementById('prof').checked;
+
+  const totalG = gross + allow;
+  const annG   = totalG * 12;
+  const slabs  = emp === 'salaried' ? YEARS[selYear].sal : YEARS[selYear].biz;
+  const {tax: annTax, slab: activeSlab} = taxFor(annG, slabs);
+
+  const mTax  = annTax / 12;
+  const mEOBI = useE ? 370 : 0;
+  const mPF   = usePF ? gross * 0.0833 : 0;
+  const mProf = useP ? profTax(totalG) : 0;
+  const mDed  = mTax + mEOBI + mPF + mProf;
+  const mNet  = totalG - mDed;
+  const effRate = annG > 0 ? (annTax/annG*100) : 0;
+
+  lastR = { gross, allow, totalG, annG, annTax, mTax, mEOBI, mPF, mProf, mDed, mNet, effRate, activeSlab, slabs, emp };
+  renderRes();
+  document.getElementById('results').style.display='block';
+  setTimeout(()=>document.getElementById('results').scrollIntoView({behavior:'smooth'}),50);
+}
+
+function period(p){
+  curPeriod=p;
+  document.getElementById('tM').className='ptab'+(p==='monthly'?' active':'');
+  document.getElementById('tA').className='ptab'+(p==='annual'?' active':'');
+  if(lastR) renderRes();
+}
+
+function renderRes(){
+  const r = lastR, m = curPeriod==='annual'?12:1, lbl = curPeriod==='annual'?'Annual':'Monthly';
+  document.getElementById('rNet').textContent = fmt(r.mNet*m);
+  document.getElementById('rPeriod').textContent = `${lbl} | Tax Year ${YEARS[selYear].label} | Gross: ${fmt(r.totalG*m)}`;
+
+  const items = [
+    {l:'Gross Salary',         v:r.totalG*m,  c:'g'},
+    {l:'Net Take-Home',        v:r.mNet*m,    c:'g'},
+    {l:'Income Tax',           v:r.mTax*m,    c:'r'},
+    {l:'Total Deductions',     v:r.mDed*m,    c:'r'},
+    {l:'EOBI',                 v:r.mEOBI*m,   c:'o'},
+    {l:'Provident Fund',       v:r.mPF*m,     c:'o'},
+    {l:'Professional Tax',     v:r.mProf*m,   c:'r'},
+    {l:'Effective Tax Rate',   v:null, extra: r.effRate.toFixed(2)+'%', c:'o'},
+    {l:'Annual Income Tax',    v:r.annTax,    c:'r'},
+    {l:'Annual Gross',         v:r.annG,      c:'g'},
+  ];
+  document.getElementById('bgrid').innerHTML = items.map(i=>`
+    <div class="bi"><span class="bl">${i.l}</span>
+    <span class="bv ${i.c}">${i.v!==null?fmt(i.v):i.extra}</span></div>`).join('');
+
+  // Bar
+  const g = r.totalG||1;
+  const np=(r.mNet/g*100).toFixed(1), tp=(r.mTax/g*100).toFixed(1),
+        ep=(r.mEOBI/g*100).toFixed(1), pp=(r.mPF/g*100).toFixed(1);
+  document.getElementById('netPct').textContent = np+'% take-home';
+  document.getElementById('barEl').innerHTML=`
+    <div class="bar-seg s-net" style="width:${np}%"></div>
+    <div class="bar-seg s-tax" style="width:${tp}%"></div>
+    <div class="bar-seg s-pf"  style="width:${pp}%"></div>
+    <div class="bar-seg s-eobi" style="width:${ep}%"></div>`;
+  document.getElementById('legEl').innerHTML=`
+    <div class="li"><div class="ld" style="background:#1a56db"></div> Net Pay (${np}%)</div>
+    <div class="li"><div class="ld" style="background:#e53e3e"></div> Income Tax (${tp}%)</div>
+    <div class="li"><div class="ld" style="background:#38b2ac"></div> PF (${pp}%)</div>
+    <div class="li"><div class="ld" style="background:#d69e2e"></div> EOBI (${ep}%)</div>`;
+
+  // Slab table
+  document.getElementById('slabYear').textContent = YEARS[selYear].label + (lastR.emp==='business'?' (Business)':' (Salaried)');
+  document.getElementById('tblEl').innerHTML=`
+    <thead><tr>
+      <th>Income Range</th><th>Fixed Tax</th><th>Rate</th><th>Your Bracket</th>
+    </tr></thead>
+    <tbody>${r.slabs.map(s=>`
+      <tr class="${s===r.activeSlab?'hl':''}">
+        <td>${s.desc}</td>
+        <td>${fmt(s.fix)}</td>
+        <td>${(s.rate*100).toFixed(1)}%</td>
+        <td>${s===r.activeSlab?'✅ You':'—'}</td>
+      </tr>`).join('')}
+    </tbody>`;
+}
+
+function copyRes(){
+  if(!lastR) return;
+  const r=lastR;
+  navigator.clipboard.writeText(
+    `Pakistan Salary Calculator – ${YEARS[selYear].label}\nGross: ${fmt(r.totalG)}\nIncome Tax: ${fmt(r.mTax)}\nEOBI: ${fmt(r.mEOBI)}\nPF: ${fmt(r.mPF)}\nProfessional Tax: ${fmt(r.mProf)}\nTotal Deductions: ${fmt(r.mDed)}\nNET TAKE-HOME: ${fmt(r.mNet)}\nEffective Tax Rate: ${r.effRate.toFixed(2)}%`
+  ).then(()=>alert('Copied!'));
+}
+
+function reset(){
+  document.getElementById('gross').value='';
+  document.getElementById('allow').value='';
+  document.getElementById('results').style.display='none';
+  lastR=null;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// FAQ toggle
+function faq(el){
+  const a = el.nextElementSibling;
+  const isOpen = a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
+  if(!isOpen){ a.classList.add('open'); el.classList.add('open'); }
+}
+
+// Enter key
+document.getElementById('gross').addEventListener('keydown',e=>{if(e.key==='Enter')calc();});
+</script>
+</body>
+</html>
